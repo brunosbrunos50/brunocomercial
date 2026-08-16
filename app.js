@@ -9,6 +9,8 @@ let PRODUCTS = [];
 let CONFIG = {};
 let activeCategory = "Todos";
 let searchTerm = "";
+let CART = [];
+let CURRENT_LIST = [];
 
 /* ---------- Parser CSV simple (soporta comillas y comas dentro de campos) ---------- */
 function parseCSV(text) {
