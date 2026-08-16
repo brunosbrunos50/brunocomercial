@@ -92,6 +92,7 @@ async function init() {
     buildCategoryChips();
     renderCatalog();
     wireEvents();
+    initCart();
   } else {
     console.error("Error cargando productos.csv:", productResult.reason);
     const status = document.getElementById("catalog-status");
@@ -147,7 +148,7 @@ function buildCategoryChips() {
     const key = normalize(p.categoria);
     if (!seen.has(key)) seen.set(key, p.categoria);
   });
-  const cats = ["Todos", ...seen.values()];
+  const cats = ["Todos", ...seen.values(), "Ofertas"];
   const wrap = document.getElementById("category-scroll");
   wrap.innerHTML = "";
 
@@ -174,7 +175,9 @@ function renderCatalog() {
 
   let list = PRODUCTS;
 
-  if (activeCategory !== "Todos") {
+  if (activeCategory === "Ofertas") {
+    list = list.filter(p => p.destacado);
+  } else if (activeCategory !== "Todos") {
     list = list.filter(p => normalize(p.categoria) === normalize(activeCategory));
   }
 
@@ -205,25 +208,29 @@ function renderCatalog() {
 
   const waNumber = (CONFIG.whatsapp_numero || "").replace(/\D/g, "");
 
-  list.forEach(p => {
+  CURRENT_LIST = list; // referencia para ubicar el producto al tocar "Agregar"
+
+  list.forEach((p, index) => {
     const card = document.createElement("article");
     card.className = "product-card";
 
-    const priceLabel = getPriceLabel(p.precio);
     const message = `Hola! Quería consultar precio y disponibilidad de: ${p.nombre}`;
     const waLink = buildWALink(waNumber, message);
+    const inCart = CART.includes(p.nombre);
 
     card.innerHTML = `
-      ${p.destacado ? '<span class="product-badge">Destacado</span>' : ""}
+      ${p.destacado ? '<span class="product-badge">Oferta</span>' : ""}
       <span class="product-category">${escapeHTML(p.categoria)}</span>
       <h2 class="product-name">${escapeHTML(p.nombre)}</h2>
       <p class="product-desc">${escapeHTML(p.descripcion)}</p>
       <div class="product-footer">
-        <span class="product-price">${priceLabel}${p.unidad ? `<span class="unit"> / ${escapeHTML(p.unidad)}</span>` : ""}</span>
         <a class="btn-consultar" href="${waLink}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.9 3.4.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z" fill="currentColor"/></svg>
           Consultar
         </a>
+        <button type="button" class="btn-add-cart${inCart ? " added" : ""}" data-index="${index}">
+          ${inCart ? "✓ En tu lista" : "+ Agregar a la lista"}
+        </button>
       </div>
     `;
     grid.appendChild(card);
@@ -272,6 +279,7 @@ function escapeHTML(str) {
 }
 
 /* ---------- Eventos ---------- */
+/* ---------- Eventos ---------- */
 function wireEvents() {
   const input = document.getElementById("search-input");
   let debounce;
@@ -282,6 +290,112 @@ function wireEvents() {
       renderCatalog();
     }, 120);
   });
+}
+
+/* ---------- Carrito / lista de consulta ---------- */
+function loadCart() {
+  try {
+    const saved = localStorage.getItem("ca_cart");
+    CART = saved ? JSON.parse(saved) : [];
+  } catch (e) {
+    CART = [];
+  }
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem("ca_cart", JSON.stringify(CART));
+  } catch (e) {
+    // localStorage no disponible (modo privado, etc.) — la lista sigue andando en memoria
+  }
+}
+
+function toggleCartItem(nombre) {
+  const idx = CART.indexOf(nombre);
+  if (idx === -1) CART.push(nombre);
+  else CART.splice(idx, 1);
+  saveCart();
+  updateCartBadge();
+  renderCatalog();
+  renderCartPanel();
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById("cart-count");
+  if (CART.length > 0) {
+    badge.hidden = false;
+    badge.textContent = CART.length;
+  } else {
+    badge.hidden = true;
+  }
+}
+
+function buildCartMessage() {
+  const lines = CART.map(nombre => `- ${nombre}`).join("\n");
+  return `Hola! Quería consultar precio y disponibilidad de estos productos:\n${lines}`;
+}
+
+function renderCartPanel() {
+  const itemsList = document.getElementById("cart-items");
+  const emptyMsg = document.getElementById("cart-empty");
+  const sendBtn = document.getElementById("cart-send");
+
+  itemsList.innerHTML = "";
+
+  if (CART.length === 0) {
+    emptyMsg.hidden = false;
+    sendBtn.hidden = true;
+    return;
+  }
+
+  emptyMsg.hidden = true;
+  sendBtn.hidden = false;
+
+  CART.forEach(nombre => {
+    const li = document.createElement("li");
+    li.className = "cart-item";
+    const span = document.createElement("span");
+    span.textContent = nombre;
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "cart-item-remove";
+    removeBtn.setAttribute("aria-label", `Sacar ${nombre} de la lista`);
+    removeBtn.textContent = "✕";
+    removeBtn.addEventListener("click", () => toggleCartItem(nombre));
+    li.appendChild(span);
+    li.appendChild(removeBtn);
+    itemsList.appendChild(li);
+  });
+
+  const waNumber = (CONFIG.whatsapp_numero || "").replace(/\D/g, "");
+  sendBtn.href = buildWALink(waNumber, buildCartMessage());
+}
+
+function openCartPanel() {
+  document.getElementById("cart-panel").hidden = false;
+  document.getElementById("cart-overlay").hidden = false;
+}
+
+function closeCartPanel() {
+  document.getElementById("cart-panel").hidden = true;
+  document.getElementById("cart-overlay").hidden = true;
+}
+
+function initCart() {
+  loadCart();
+  updateCartBadge();
+  renderCartPanel();
+
+  document.getElementById("catalog-grid").addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-add-cart");
+    if (!btn) return;
+    const producto = CURRENT_LIST[Number(btn.dataset.index)];
+    if (producto) toggleCartItem(producto.nombre);
+  });
+
+  document.getElementById("float-cart").addEventListener("click", openCartPanel);
+  document.getElementById("cart-close").addEventListener("click", closeCartPanel);
+  document.getElementById("cart-overlay").addEventListener("click", closeCartPanel);
 }
 
 init();
