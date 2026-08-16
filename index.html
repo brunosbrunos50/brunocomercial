@@ -87,9 +87,31 @@
 </footer>
 
 <!-- Botón flotante WhatsApp (mobile) -->
+<!-- Botón flotante WhatsApp (mobile) -->
 <a id="float-whatsapp" class="float-whatsapp" href="#" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
   <svg viewBox="0 0 24 24" class="icon-wa" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.9 3.4.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z" fill="currentColor"/></svg>
 </a>
+
+<!-- Botón flotante: lista de consulta (carrito) -->
+<button id="float-cart" class="float-cart" type="button" aria-label="Ver mi lista de consulta">
+  <svg viewBox="0 0 24 24" class="icon-cart" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12L4 3H1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg>
+  <span id="cart-count" class="cart-count" hidden>0</span>
+</button>
+
+<!-- Panel de la lista de consulta -->
+<div id="cart-overlay" class="cart-overlay" hidden></div>
+<div id="cart-panel" class="cart-panel" hidden>
+  <div class="cart-panel-header">
+    <h2>Tu lista de consulta</h2>
+    <button id="cart-close" class="cart-close" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <ul id="cart-items" class="cart-items"></ul>
+  <p id="cart-empty" class="cart-empty" hidden>Todavía no agregaste productos. Tocá "+ Agregar a la lista" en los que te interesan.</p>
+  <a id="cart-send" class="btn-cart-send" href="#" target="_blank" rel="noopener" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.9 3.4.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z" fill="currentColor"/></svg>
+    Consultar esta lista por WhatsApp
+  </a>
+</div>
 
 <script src="app.js"></script>
 </body>
