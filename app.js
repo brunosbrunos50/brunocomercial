@@ -85,6 +85,7 @@ async function init() {
         precio: (p.precio || "").trim(),
         unidad: (p.unidad || "").trim(),
         destacado: (p.destacado || "").toUpperCase() === "SI",
+        imagen: (p.imagen || "").trim(),
       }))
       // descarta filas sin nombre de producto (fila vacía o corrupta en el CSV)
       .filter(p => p.nombre !== "");
@@ -219,6 +220,11 @@ function renderCatalog() {
     const inCart = CART.includes(p.nombre);
 
     card.innerHTML = `
+      ${p.imagen ? `
+        <div class="product-image-wrap">
+          <img src="assets/productos/${encodeURIComponent(p.imagen)}" alt="${escapeHTML(p.nombre)}" loading="lazy" onerror="this.closest('.product-image-wrap').remove()">
+        </div>
+      ` : ""}
       ${p.destacado ? '<span class="product-badge">Oferta</span>' : ""}
       <span class="product-category">${escapeHTML(p.categoria)}</span>
       <h2 class="product-name">${escapeHTML(p.nombre)}</h2>

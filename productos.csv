@@ -1,43 +1,45 @@
-categoria,nombre,descripcion,precio,unidad,destacado
-Herramientas,"Taladro percutor 1/2""",600W - Incluye maletín y 2 brocas,3200,unidad,SI
-Herramientas,"Amoladora angular 4 1/2""",850W,2100,unidad,NO
-Herramientas,Sierra caladora,650W - Corte hasta 65mm en madera,2450,unidad,NO
-Herramientas,Set de destornilladores,Juego 6 piezas punta imantada,590,juego,NO
-Herramientas,Martillo carpintero,Cabo de fibra de vidrio - 500g,780,unidad,NO
-Herramientas,"Pinza universal 8""",Aislada 1000V,650,unidad,NO
-Herramientas,Nivel de burbuja 60cm,Perfil de aluminio,890,unidad,NO
-Herramientas,Cinta métrica 5m,Carcasa de goma antigolpe,320,unidad,NO
-Materiales,Cemento Portland 25kg,Bolsa,410,bolsa,SI
-Materiales,Arena fina,Por m³ - retiro en local,890,m³,NO
-Materiales,Pórtland gris 50kg,Bolsa reforzada,780,bolsa,NO
-Materiales,Cal hidratada 25kg,Bolsa,290,bolsa,NO
-Materiales,Ladrillo común,Por millar,4800,millar,NO
-Materiales,Bloque de hormigón 20x20x40,Unidad,95,unidad,NO
-Electricidad,Cable unipolar 2.5mm,Por metro - color a elección,58,metro,NO
-Electricidad,Tomacorriente doble,Con tapa embutida,290,unidad,NO
-Electricidad,Llave térmica 16A,Unipolar,650,unidad,NO
-Electricidad,Lámpara LED 12W,Rosca E27 - luz cálida,320,unidad,NO
-Electricidad,"Caño corrugado 3/4""",Por metro,45,metro,NO
-Electricidad,Tablero eléctrico 8 bocas,Con tapa,1450,unidad,NO
-Plomería,Caño PVC 110mm,Por metro - uso cloacal,780,metro,NO
-Plomería,"Caño PVC 1/2""",Por metro - agua fría,220,metro,NO
-Plomería,"Codo PVC 90° 1/2""",Unidad,85,unidad,NO
-Plomería,"Canilla de paso 1/2""",Bronce,590,unidad,NO
-Plomería,Flexible para inodoro 40cm,Trenzado inoxidable,380,unidad,NO
-Plomería,Sifón de piso,PVC con rejilla,290,unidad,NO
-Pinturas,Látex interior 20L,Blanco - lavable,4200,balde,SI
-Pinturas,Esmalte sintético 1L,Colores a elección,780,litro,NO
-Pinturas,Fondo antióxido 1L,Gris o rojo,650,litro,NO
-Pinturas,Rodillo antigota 23cm,Con mango,290,unidad,NO
-Pinturas,Pincel N°4,Cerda natural,180,unidad,NO
-Pinturas,Cinta de papel 24mm,Para pintar - rollo 40m,220,unidad,NO
-Ferretería general,"Tornillo autoperforante 8x1""",Caja x100,450,caja,NO
-Ferretería general,"Clavo de acero 2""",Kg,190,kg,NO
-Ferretería general,"Bisagra reforzada 3""",Par,320,par,NO
-Ferretería general,Candado de seguridad 50mm,Latón macizo,890,unidad,NO
-Ferretería general,Alambre galvanizado N°14,Rollo 1kg,290,rollo,NO
-Ferretería general,Silicona multiuso 280ml,Transparente,320,unidad,NO
-Jardín,Manguera de riego 15m,Con conectores,1450,unidad,NO
-Jardín,Pala punta cuadrada,Cabo de madera,890,unidad,NO
-Jardín,Tijera de podar,Hoja de acero,650,unidad,NO
-Jardín,Carretilla 65L,Rueda neumática,3800,unidad,SI
+categoria,nombre,descripcion,precio,unidad,destacado,imagen
+Herramientas,"Taladro percutor 1/2""",600W - Incluye maletín y 2 brocas,3200,unidad,SI,
+Herramientas,"Amoladora angular 4 1/2""",850W,2100,unidad,NO,
+Herramientas,Sierra caladora,650W - Corte hasta 65mm en madera,2450,unidad,NO,
+Herramientas,Set de destornilladores,Juego 6 piezas punta imantada,590,juego,NO,
+Herramientas,Martillo carpintero,Cabo de fibra de vidrio - 500g,780,unidad,NO,
+Herramientas,"Pinza universal 8""",Aislada 1000V,650,unidad,NO,
+Herramientas,Nivel de burbuja 60cm,Perfil de aluminio,890,unidad,NO,
+Herramientas,Cinta métrica 5m,Carcasa de goma antigolpe,320,unidad,NO,
+Materiales,Cemento Portland 25kg,Bolsa,410,bolsa,SI,
+Materiales,Arena fina,Por m³ - retiro en local,890,m³,NO,
+Materiales,Pórtland gris 50kg,Bolsa reforzada,780,bolsa,NO,
+Materiales,Cal hidratada 25kg,Bolsa,290,bolsa,NO,
+Materiales,Ladrillo común,Por millar,4800,millar,NO,
+Materiales,Bloque de hormigón 20x20x40,Unidad,95,unidad,NO,
+Electricidad,Cable unipolar 2.5mm,Por metro - color a elección,58,metro,NO,
+Electricidad,Tomacorriente doble,Con tapa embutida,290,unidad,NO,
+Electricidad,Llave térmica 16A,Unipolar,650,unidad,NO,
+Electricidad,Lámpara LED 12W,Rosca E27 - luz cálida,320,unidad,NO,
+Electricidad,"Caño corrugado 3/4""",Por metro,45,metro,NO,
+Electricidad,Tablero eléctrico 8 bocas,Con tapa,1450,unidad,NO,
+Plomería,Caño PVC 110mm,Por metro - uso cloacal,780,metro,NO,
+Plomería,"Caño PVC 1/2""",Por metro - agua fría,220,metro,NO,
+Plomería,"Codo PVC 90° 1/2""",Unidad,85,unidad,NO,
+Plomería,"Canilla de paso 1/2""",Bronce,590,unidad,NO,
+Plomería,Flexible para inodoro 40cm,Trenzado inoxidable,380,unidad,NO,
+Plomería,Sifón de piso,PVC con rejilla,290,unidad,NO,
+Pinturas,Látex interior 20L,Blanco - lavable,4200,balde,SI,
+Pinturas,Esmalte sintético 1L,Colores a elección,780,litro,NO,
+Pinturas,Fondo antióxido 1L,Gris o rojo,650,litro,NO,
+Pinturas,Rodillo antigota 23cm,Con mango,290,unidad,NO,
+Pinturas,Pincel N°4,Cerda natural,180,unidad,NO,
+Pinturas,Cinta de papel 24mm,Para pintar - rollo 40m,220,unidad,NO,
+Ferretería general,"Tornillo autoperforante 8x1""",Caja x100,450,caja,NO,
+Ferretería general,"Clavo de acero 2""",Kg,190,kg,NO,
+Ferretería general,"Bisagra reforzada 3""",Par,320,par,NO,
+Ferretería general,Candado de seguridad 50mm,Latón macizo,890,unidad,NO,
+Ferretería general,Alambre galvanizado N°14,Rollo 1kg,290,rollo,NO,
+Ferretería general,Silicona multiuso 280ml,Transparente,320,unidad,NO,
+Jardín,Manguera de riego 15m,Con conectores,1450,unidad,NO,
+Jardín,Pala punta cuadrada,Cabo de madera,890,unidad,NO,
+Jardín,Tijera de podar,Hoja de acero,650,unidad,NO,
+Jardín,Carretilla 65L,Rueda neumática,3800,unidad,SI,
+Cerámicas,Porcelanato gris 60x60,"Rectificado, caja x1.44m²",890,m²,NO,porcelanato-gris.jpg
+Cerámicas,Cerámica blanca 30x30,"Esmaltada, ideal baños",450,m²,NO,ceramica-blanca.jpg

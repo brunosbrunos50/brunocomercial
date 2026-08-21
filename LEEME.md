@@ -26,7 +26,8 @@ Abrí `productos.csv` con Excel o Google Sheets. Columnas:
 | descripcion  | detalle corto (opcional)                             |
 | precio       | solo números, sin el símbolo $ (ej: 3200)            |
 | unidad       | unidad, bolsa, metro, kg, etc.                       |
-| destacado    | SI o NO — los "SI" aparecen primero en el catálogo   |
+| destacado    | SI o NO — los "SI" aparecen primero y con el tag "Oferta" |
+| imagen       | opcional — nombre del archivo de foto (ver abajo)    |
 
 **Para agregar/sacar muchos productos a la vez:** editá el CSV entero en Excel
 y volvé a subir el archivo reemplazando el que está en la web.
@@ -45,6 +46,39 @@ prestá atención si editás el archivo a mano fuera de Excel.
 - Si el precio depende del caso (ej: cortes especiales), podés escribir texto como `A convenir` en vez de un número — se muestra tal cual, sin el signo $.
 - No dejes filas con categoría cargada pero el resto vacío (fila "fantasma" de Excel) — el sitio las ignora igual, pero mejor borrarlas del archivo para mantenerlo prolijo.
 - Las categorías no distinguen mayúsculas/minúsculas (`Herramientas` y `herramientas` cuentan como la misma), pero por prolijidad visual conviene escribirlas siempre igual.
+
+### Fotos de productos (opcional, solo en algunos)
+
+La mayoría de los productos no necesita foto — la idea es usarlas solo donde
+el diseño le importa al cliente (cerámicas, porcelanatos, grifería, etc.).
+
+**Cómo agregar una foto a un producto:**
+
+1. Guardá la foto dentro de la carpeta `assets/productos/`.
+2. En la columna `imagen` de ese producto en el CSV, escribí el nombre exacto
+   del archivo (ej: `porcelanato-gris.jpg`).
+3. Dejá la columna `imagen` **vacía** en los productos que no necesitan foto
+   — el sitio los muestra igual que siempre, sin espacio en blanco raro.
+
+**Recomendaciones para las fotos:**
+
+- Formato cuadrado (1:1) — el sitio recorta automáticamente para que se vea
+  parejo, pero si la foto ya es cuadrada se ve mejor.
+- Tamaño ideal: entre 600x600 y 1000x1000 píxeles. No hace falta más — fotos
+  gigantes solo hacen que la web cargue más lento en el celular del cliente.
+- Formato JPG o PNG, peso idealmente bajo 300KB por foto (cualquier editor o
+  el mismo WhatsApp al reenviarla suele comprimir lo suficiente).
+- Nombre de archivo sin espacios ni acentos (ej: `ceramica-blanca.jpg`, no
+  `cerámica blanca.jpg`) — evita problemas al subir a GitHub.
+
+Si escribís mal el nombre del archivo en el CSV, o te olvidás de subir la
+foto, el sitio no se rompe: el producto simplemente se muestra sin foto,
+como el resto.
+
+**Nota:** dejé 2 productos de ejemplo con foto en `productos.csv`
+("Porcelanato gris 60x60" y "Cerámica blanca 30x30", categoría "Cerámicas")
+para que veas el resultado real. Son de muestra — borralos o reemplazalos
+por tus productos reales cuando cargues el catálogo definitivo.
 
 ## 2) Cómo cambiar WhatsApp / dirección / horario
 
